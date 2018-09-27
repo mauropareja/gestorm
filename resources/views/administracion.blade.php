@@ -17,6 +17,7 @@
                             <th scope="col">Codigo</th>
                             <th scope="col">Descripcion Del Equipo</th>
                             <th scope="col">Fecha Creada</th>
+                            <th scope="col">Usuario</th>
                             <th scope="col">Opciones</th>
                             </tr>
                         </thead>
@@ -27,6 +28,7 @@
                             <td>{{$solicitud->codigo}}</td>
                             <td>{{$solicitud->descripcion_equipo}}</td>
                             <td>{{$solicitud->created_at}}</td>
+                            <td>{{$solicitud->user->name}}</td>
                             <td>
                                 <a href="{{route('administracioin.revisar',$solicitud)}}" class="btn btn-primary">Revisar</a>
                             </td>

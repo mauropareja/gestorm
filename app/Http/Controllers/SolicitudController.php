@@ -40,8 +40,10 @@ class SolicitudController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {   
+        $solicitud = Solicitud::findOrFail($id);
+        return view('mostrarSolicitud')
+                        ->with('solicitud',$solicitud);
     }
 
     /**
@@ -52,7 +54,9 @@ class SolicitudController extends Controller
      */
     public function edit($id)
     {
-        //
+        $solicitud = Solicitud::findOrFail($id);
+        return view('editarSolicitud')
+                        ->with('solicitud',$solicitud);
     }
 
     /**
@@ -64,7 +68,10 @@ class SolicitudController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $solicitud = Solicitud::findOrFail($id);
+        $solicitud->fill($request->all());
+        $solicitud->save();
+        return redirect()->route('home');
     }
 
     /**
@@ -75,6 +82,10 @@ class SolicitudController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $solicitud = Solicitud::findOrFail($id);
+        if($solicitud->estado=='espera'){
+            $solicitud->delete();
+        }
+        return redirect()->route('home');
     }
 }

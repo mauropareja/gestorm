@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
 
-        @role('writer')
+        @role('Administrador')
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Administracion</div>
@@ -45,6 +45,7 @@
                             <td>
                                 <a href="{{route('solicitud.show',$solicitud)}}" class="btn btn-primary">Mostrar</a>
                                 <a href="{{route('solicitud.edit',$solicitud)}}" class="btn btn-primary">Editar</a>
+                                
                             </td>
                             </tr>
                             @endforeach
