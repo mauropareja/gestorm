@@ -31,6 +31,7 @@
                             <th scope="col">Descripcion Del Equipo</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Fecha</th>
+                            <th scope="col">Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,6 +42,10 @@
                             <td>{{$solicitud->descripcion_equipo}}</td>
                             <td>{{$solicitud->estado}}</td>
                             <td>{{$solicitud->fecha}}</td>
+                            <td>
+                                <a href="{{route('solicitud.show',$solicitud)}}" class="btn btn-primary">Mostrar</a>
+                                <a href="{{route('solicitud.edit',$solicitud)}}" class="btn btn-primary">Editar</a>
+                            </td>
                             </tr>
                             @endforeach
                         </tbody>
