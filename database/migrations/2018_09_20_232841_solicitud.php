@@ -14,13 +14,18 @@ class Solicitud extends Migration
     public function up()
     {
         Schema::create('solicitudes', function (Blueprint $table) {
-            //
             $table->increments('id');
-            $table->enum('estado',['espera', 'visto']);
+            $table->string('nombre');
+            $table->enum('estado',['espera', 'visto'])->default('espera');
+            $table->string('codigo');
+            $table->string('descripcion_equipo')->nullable();
+            $table->text('descripcion')->nullable();
             $table->dateTime('fecha')->nullable();
-            $table->integer('user_id')->unsigned()->unique();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
+
+            //identifica  
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

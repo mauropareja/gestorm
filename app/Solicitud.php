@@ -15,11 +15,11 @@ class Solicitud extends Model
      * @var array
      */
     protected $fillable = [
-        'estado','user_id'
+        'estado','nombre','codigo','descripcion_equipo','descripcion','fecha','user_id'
     ];
 
-    /**
-     * Get the user that owns the phone.
+     /**
+     * Get the post that owns the comment.
      */
     public function user()
     {

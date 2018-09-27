@@ -69,12 +69,6 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-
-        Solicitud::create([
-            'estado'=>'visto',
-            'user_id'=>$user->id,
-        ]);
-
         return $user;
     }
 }

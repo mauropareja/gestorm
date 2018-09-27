@@ -2,20 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Solicitud;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SolicitudController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        
-    }
-
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -23,7 +16,7 @@ class SolicitudController extends Controller
      */
     public function create()
     {
-        //
+        return view('registroSolicitud');
     }
 
     /**
@@ -34,7 +27,10 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $solicitud = new Solicitud($request->all());
+        $solicitud->user_id = Auth::user()->id;
+        $solicitud->save();
+        return redirect()->route('home');
     }
 
     /**

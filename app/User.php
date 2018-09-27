@@ -2,12 +2,14 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
+    use HasRoles;
     use Notifiable;
 
     /**
@@ -29,10 +31,10 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the phone record associated with the user.
+     * Get the comments for the blog post.
      */
-    public function solicitud()
+    public function solicitudes()
     {
-        return $this->hasOne('App\Solicitud');
+        return $this->hasMany('App\Solicitud');
     }
 }
